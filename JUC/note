@@ -1,0 +1,17 @@
+线程生命周期：
+new -> start() -> runnable -> 获取cpu -> running -> dead
+三种block：
+running -> join()、sleep() -> Block -> join()结束、sleep()结束、IO完成 -> runnable
+running -> wait() -> wait_block -> notify()/notifyAll()/interrupt() -> lock_block -> 获得锁 -> runnable
+running -> synchronized -> lock_block -> 获得锁 -> runnable
+
+running -> yield() -> runnable
+
+在A线程中调用B线程的join方法 -> 只有当B线程执行完毕时，A线程才能继续执行
+join方法必须在start()后调用才有意义
+
+所有前台线程死亡，守护线程才会死亡
+
+sleep只让当前线程沉睡
+
+把线程优先级设高，只是让线程获取CPU执行权的概率升高，比不是优先执行
